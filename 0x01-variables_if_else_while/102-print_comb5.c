@@ -15,16 +15,17 @@ int main(void)
 				for (l = 48; l <= 57; l++)
 				{
 					if ((i < k) || ((i == k) && (j < l)))
-					{putchar(i);
-					putchar(j);
-					putchar(' ');
-					putchar(k);
-					putchar(l);
-					if ((i != 57) || (j != 56))
 					{
-						putchar (',');
+						putchar(i);
+						putchar(j);
 						putchar(' ');
-					}
+						putchar(k);
+						putchar(l);
+						if ((i != 57) || (j != 56))
+						{
+							putchar (',');
+							putchar(' ');
+						}
 					}
 				}
 	putchar('\n');
