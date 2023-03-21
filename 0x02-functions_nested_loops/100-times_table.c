@@ -21,19 +21,24 @@ void print_times_table(int n)
 				t = (p % 100) / 10;
 				u = (p % 100) % 10;
 				_putchar(' ');
-			if (h == 0)
-				_putchar(' ');
-			else
-				_putchar(h + '0');
-			if (t == 0)
-				_putchar(' ');
-			else
-				_putchar(t + '0');
-			_putchar(u + '0');
-			if (j != n)
-				_putchar(',');
-			else
-				_putchar('\n');
+				if (h != 0)
+				{
+					_putchar(h + '0');
+					_putchar(t + '0');
+				}
+				else
+				{
+					_putchar(' ');
+					if (t != 0)
+						_putchar(t + '0');
+					else
+						_putchar(' ');
+				}
+				_putchar(u + '0');
+				if (j != n)
+					_putchar(',');
+				else
+					_putchar('\n');
 			}
 		}
 }
