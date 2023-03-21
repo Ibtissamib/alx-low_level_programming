@@ -8,7 +8,7 @@
 int _islower(int c)
 {
 	char al;
-	
+
 	al = 'a';
 	while ((c != al) && (al <= 'z'))
 		al++;
