@@ -33,7 +33,10 @@ void print_times_table(int n)
 				}
 				_putchar(u + '0');
 				if (j != n)
+				{
 					_putchar(',');
+					_putchar(' ');
+				}
 				else
 					_putchar('\n');
 			}
