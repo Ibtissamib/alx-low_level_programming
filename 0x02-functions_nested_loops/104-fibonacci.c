@@ -7,7 +7,7 @@
 int main(void)
 {
 	int i;
-	long int f1, f2, f3, p1f1, p1f2, p1f3, p2f1, p2f2, p2f3;
+	long int f1, f2, f3, p1f1, p1f2, p1f3, p2f1, p2f2, p2f3, rest;
 
 	i = 3;
 	f1 = 1;
@@ -27,11 +27,9 @@ int main(void)
 	p2f1 = f1 % 10000000000;
 	for (i = 92; i <= 98; i++)
 	{
-		p2f3 = p2f1 + p2f2;
-		if (p2f3 <= 9999999999)
-			p1f3 = p1f2 + p1f1;
-		else
-			p1f3 = p1f2 + p1f1 + 1;
+		p2f3 = (p2f1 + p2f2) % 10000000000;
+		rest = (p2f1 + p2f2) / 10000000000;
+		p1f3 = p1f2 + p1f1 + rest;
 		printf(", %ld%ld", p1f3, p2f3);
 		p1f1 = p1f2;
 		p2f1 = p2f2;
