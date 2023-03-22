@@ -6,22 +6,21 @@
  */
 int main(void)
 {
-	int i, j, m3, m5, d3, d5, sum;
+	int i, m3, m5, sum;
 
-	d3 = 341;
-	d5 = 204;
 	sum = 0;
-	for (i = 1; i <= d3; i++)
+	for (i = 1; i <= 341; i++)
 	{
-		m3 = 3 * d3;
+		m3 = 3 * i;
 		sum = sum + m3;
 	}
-	for (j = 1; j <= d5; j++)
+	for (i = 1; i <= 204; i++)
 	{
-		m5 = 3 * d3;
+		m5 = 5 * i;
 		sum = sum + m5;
 	}
+	for (i = 1; i <= 68; i++)
+		sum = sum - (15 * i);
 	printf("%d\n", sum);
-
 	return (0);
 }
