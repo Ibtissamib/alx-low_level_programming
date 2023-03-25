@@ -8,27 +8,26 @@
  */
 int main(void)
 {
-	long int i = 2, j = 2;
 	long int largest = 1;
-	long int m = 1;
 	long int n = 612852475143;
+	long int i = 3;
 
-	while (i <= (n / m))
+	while ((n % 2) == 0)
 	{
-		while (j <= i)
-			if ((i % j) != 0)
-				j++;
-			else
-				break;
-		if ((j >= i) && ((n % i) == 0))
+		largest = 2;
+		n = n / 2;
+	}
+	while (i <= sqrt(n))
+	{
+		while ((n % i) == 0)
 		{
 			largest = i;
-			while (((n / m) % largest) == 0)
-				m = m * largest;
+			n = n / i;
 		}
-		j = 2;
-		i = i + 1;
+		i = i + 2;
 	}
+	if (n > 2)
+		largest = n;
 	printf("%ld\n", largest);
 	return (0);
 }
