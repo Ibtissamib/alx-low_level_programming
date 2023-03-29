@@ -32,13 +32,15 @@ int _atoi(char *s)
 		}
 		else if (i <= '9')
 		{
-			b = (b * 10) + (i - '0');
+			if (a > 0)
+				b = (b * 10) + (i - '0');
+			else
+				b = (b * 10) - (i - '0');
 			i = '0';
 			s++;
 		}
 		else
 			break;
 	}
-	b = b * a;
 	return (b);
 }
