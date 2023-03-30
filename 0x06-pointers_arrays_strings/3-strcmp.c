@@ -20,6 +20,8 @@ int _strcmp(char *s1, char *s2)
 		n = 15;
 	else if (*s2 != '\0')
 		n = -15;
+	else
+		n = 0;
 	s1 = s1 - len;
 	s2 = s2 - len;
 	return (n);
