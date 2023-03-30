@@ -1,10 +1,11 @@
-#include"main.h"
+#include "main.h"
 /**
  * _strcmp- compares two strings.
  * @s1: pointer to char
  * @s2: pointer to char
  *
- * Return: Integer
+ * Return: 15 if s1 is greater , -15 if s2 is greater,
+ * 0 if s1 & s2 are equals
  */
 int _strcmp(char *s1, char *s2)
 {
