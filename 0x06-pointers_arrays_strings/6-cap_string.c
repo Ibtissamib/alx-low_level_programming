@@ -9,8 +9,6 @@ char *cap_string(char *s)
 {
 	int len = 0;
 
-	s++;
-	len++;
 	while (*s != '\0')
 	{
 		if ((*(s - 1) == ' ') ||
