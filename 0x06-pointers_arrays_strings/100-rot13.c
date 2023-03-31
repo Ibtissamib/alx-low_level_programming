@@ -8,11 +8,11 @@
 char *rot13(char *s)
 {
 	int len = 0;
-	char i = 97;
+	char i;
 
 	while (*s != '\0')
 	{
-		while (i <= 122)
+		for (i = 97; i <= 122; i++)
 		{
 			if ((*s == i || *s == i - 32) && i <= 109)
 			{
@@ -24,10 +24,7 @@ char *rot13(char *s)
 				*s = *s - 13;
 				break;
 			}
-			else
-				i++;
 		}
-		i = 97;
 		s++;
 		len++;
 	}
