@@ -22,31 +22,27 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	n1 = n1 + len1 - 1;
 	n2 = n2 + len2 - 1;
 	r = r + size_r - 1;
-	while ((len1 >= 1) && (len2 >= 1))
+	while (*n1 && *n2)
 	{
 		s = (*n1 - '0') + (*n2 - '0') + (s / 10);
 		*r = (s % 10) + '0';
 		n1--;
 		n2--;
 		r--;
-		len1--;
-		len2--;
 	}
-	if (len1 < 1)
-		while (len2 >= 1)
+	if (!(*n1))
+		while (*n2)
 		{
 			s = (*n2 - '0') + (s / 10);
 			*r = (s % 10) + '0';
 			n2--;
 			r--;
-			len2--;
 		}
-	else if (len2 < 1)
-		while (len1 >= 1)
+	else if (!(*n2))
+		while (*n1)
 		{
 			s = (*n1 - '0') + (s / 10);
 			*r = (s % 10) + '0';
-			len1--;
 			n1--;
 			r--;
 		}
