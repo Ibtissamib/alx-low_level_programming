@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * infinite_add- adds two numbers.
- * @n1: pointer to character
+ * @n1: pointer to char
  * @n2: pointer to char
  * @r: pointer to char
  * @size_r: int
@@ -22,7 +22,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	n1 = n1 + len1 - 1;
 	n2 = n2 + len2 - 1;
 	r = r + size_r - 1;
-	while (*n1 && *n2)
+	while ((*n1 != '\0') && (*n2 != '\0'))
 	{
 		s = (*n1 - '0') + (*n2 - '0') + (s / 10);
 		*r = (s % 10) + '0';
@@ -30,20 +30,22 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		n2--;
 		r--;
 	}
-	while (!(*n1) && *n2)
-	{
-		s = (*n2 - '0') + (s / 10);
-		*r = (s % 10) + '0';
-		n2--;
-		r--;
-	}
-	while (!(*n2) && *n1)
-	{
-		s = (*n1 - '0') + (s / 10);
-		*r = (s % 10) + '0';
-		n1--;
-		r--;
-	}
+	if (*n1 == '\0')
+		while (*n2 != '\0')
+		{
+			s = (*n2 - '0') + (s / 10);
+			*r = (s % 10) + '0';
+			n2--;
+			r--;
+		}
+	else if (*n2 == '\0')
+		while (*n1 != '\0')
+		{
+			s = (*n1 - '0') + (s / 10);
+			*r = (s % 10) + '0';
+			n1--;
+			r--;
+		}
 	*r = (s / 10) + '0';
 	return (r);
 }
