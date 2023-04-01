@@ -44,9 +44,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		n1--;
 		r--;
 	}
-	*r = (s / 10) + '0';
-	if (*r)
-		return (r);
-	else
-		return (0);
+	if ((s / 10) + '0' > 0)
+		*r = (s / 10) + '0';
+	return (r);
 }
