@@ -16,7 +16,11 @@ void print_chessboard(char (*a)[8])
 		_putchar('\n');
 	}
 	for (i = 2; i <= 5; i++)
-		_putchar('\n');
+	{
+		for (j = 0; j <= 7; j++)
+			_putchar(' ');
+	_putchar('\n');
+	}
 	for (i = 6; i <= 7; i++)
 	{
 		for (j = 0; j <= 7; j++)
