@@ -5,26 +5,25 @@
  * @s: pointer to char
  * @accept: char
  *
- * Return: unsigned int
+ * Return: unsigned ini
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int length = 0, count = 0;
+	unsigned int length = 0, i;
 
 	while (*s)
+	{
+		for (i = 0; accept[i]; i++
 		{
-			while (*accept)
+			if (*s == accept[i])
 			{
-				if (*s == *accept)
-				{
-					length++;
-					break;
-				}
-				accept++;
-				count++;
+				length++;
+				break;
 			}
-			accept = accept - count;
-			s++;
+			else if (accept[i + 1] == '\0')
+				return (length);
 		}
+		s++;
+	}
 	return (length);
 }
