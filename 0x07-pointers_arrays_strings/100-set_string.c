@@ -8,5 +8,8 @@
  */
 void set_string(char **s, char *to)
 {
-	*s = to;
+	if (*to)
+		*s = to;
+	else
+		*s = '\0';
 }
