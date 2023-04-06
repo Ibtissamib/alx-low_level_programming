@@ -22,7 +22,7 @@ int _sqrt_recursion(int n)
 int _sqrt(int n, int i)
 {
 	if ((n % i == 0) && (n / i == i))
-			return (i);
+		return (i);
 	else if (i < n)
 		return (_sqrt(n, i + 1));
 	else
