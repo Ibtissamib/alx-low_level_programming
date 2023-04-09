@@ -8,14 +8,11 @@
  */
 int main(int argc, char *argv[])
 {
-	int i;
-
-	for (i = 0; i < argc; i++)
-		while (*argv[i])
-		{
-			_putchar(*argv[i]);
-			argv[i]++;
-		}
+	(void) argc;
+	while (*argv[0])
+	{	_putchar(*argv[0]);
+		argv[0]++;
+	}
 	_putchar('\n');
 	return (0);
 }
