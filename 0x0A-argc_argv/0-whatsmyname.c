@@ -2,9 +2,9 @@
 /**
  * main- Entry point
  * @argc: integer
- * @argv[]: pointer to char
+ * @argv: pointer to character chain
  *
- * @Return: Success Alaways 0
+ * Return: Always 0 (Success)
  */
 int main(int argc, char *argv[])
 {
