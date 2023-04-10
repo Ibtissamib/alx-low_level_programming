@@ -10,7 +10,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int i, ad = 0, s[4] = {0};
+	int i, ad = 0, s = 0;
 	unsigned int j;
 
 	for (i = 1; i < argc; i++)
@@ -22,9 +22,10 @@ int main(int argc, char *argv[])
 				printf("Error\n");
 				return (1);
 			}
-			s[i] = s[j] * 10 + (argv[i][j] - '0');
+			s = s * 10 + (argv[i][j] - '0');
 		}
-		ad = ad + s[i];
+		ad = ad + s;
+		s = 0;
 	}
 	printf("%d\n", ad);
 	return (0);
