@@ -10,19 +10,22 @@
 int nbr_wrd(char *str)
 {
 	int len = 0, j = 0;
+	if (str[j] != '\0')
+		j++;
 	while (str[j] != '\0')
 	{
-		if (str[j] == ' ')
+		if ((str[j] == ' ') && (str[j - 1] != ' '))
 			len++;
 		j++;
 	}
-	len++;
+	if (str[j - 1] != ' ')
+		len++;
 	return (len);
 }
 char **strtow(char *str)
 {
 	char **p;
-	int i = 0, j = 0, k = 0, nbr = 0;
+	int i = 0, j = 0, k = 0, l = 0, nbr = 0;
 
 	nbr = nbr_wrd(str);
 	printf("taille %d\n", nbr);
@@ -38,42 +41,43 @@ char **strtow(char *str)
 		printf("sucess\n");
 	while (k < nbr)
 	{
-		if ((str[j] == ' ') || (str[j] == '\0'))
+		while (str[j] == ' ')
+		       j++;
+		while (str[j] != ' ')
 		{
-			p[k] = (char *)malloc(sizeof(char) * (i + 1));
-			if (p[k] == NULL)
+			i++;
+			j++;
+		}
+		p[k] = (char *)malloc(sizeof(char) * (i + 1));
+		if (p[k] == NULL)
+		{
+			while (k >= 0)
 			{
-				while (k >= 0)
-				{
-					free(p[k]);
-					k--;
-				}
-				free(p);
+				free(p[k]);
+				k--;
 			}
-			else
-				printf("success %d taille %d\n", k, i);
-			i = 0;
-			k++;
+			free(p);
 		}
 		else
-			i++;
-		j++;
+			printf("success %d taille %d\n", k, i + 1);
+		i = 0;
+		k++;
 	}
 	k = 0;
-	i = 0;
+	l = 0;
 	j = 0;
 	while (k < nbr) 
 	{
+		while (str[j] == ' ')
+			j++;
 		while (str[j] != ' ')
 		{
-			p[k][i] = str[j];
-			i++;
+			p[k][l] = str[j];
+			l++;
 			j++;
 		}
-		if (str[j] == ' ')
-			j++;
-		p[k][i] = '\0';
-		i = 0;
+		p[k][l] = '\0';
+		l = 0;
 		k++;
 	}
 	return (p);
