@@ -1,11 +1,10 @@
 #include "main.h"
-#include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
+#include <string.h>
 /**
- * argstostr- concatenates all the arguments of your program.
+ * argstostr- that concatenates all the arguments of your program.
  * @ac: Integer
- * @av: double pointer to char
+ * @av: pointer to character chain
  *
  * Return: pointer to char
  */
@@ -20,7 +19,6 @@ char *argstostr(int ac, char **av)
 	while (i < ac)
 	{
 		len = len + strlen(av[i]) + 1;
-		printf("%d", len);
 		i++;
 	}
 	p = malloc(sizeof(char) * len + 1);
@@ -40,6 +38,4 @@ char *argstostr(int ac, char **av)
 	p[k] = '\0';
 	return (p);
 }
-
-
 
