@@ -25,6 +25,7 @@ char **strtow(char *str)
 	int i = 0, j = 0, k = 0, nbr = 0;
 
 	nbr = nbr_wrd(str);
+	printf("taille %d\n", nbr);
 	if (str == NULL)
 		return (NULL);
 	p = (char **)malloc(nbr * sizeof(char *));
