@@ -11,23 +11,13 @@ int nbr_wrd(char *str);
 char **strtow(char *str)
 {
 	char **p;
-	int find = 0, i = 0, j = 0, k = 0, l = 0, m = 0, nbr = 0;
+	int i = 0, j = 0, k = 0, l = 0, m = 0, nbr = 0;
 
-	while (str[j])
-	{
-		if (str[j] != ' ')
-		{
-			find = 1;
-			break;
-		}
-
-		else
-			j++;
-	}
-	if (find == 0 || str == NULL || *str == '\0')
+	if (str == NULL || *str == '\0')
 		return (NULL);
-	j = 0;
 	nbr = nbr_wrd(str);
+	if (nbr == 0)
+		return (NULL);
 	p = (char **)malloc((nbr + 1) * sizeof(char *));
 	if (p == NULL)
 		return (NULL);
