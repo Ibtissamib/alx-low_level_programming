@@ -35,6 +35,7 @@ char **strtow(char *str)
 				k--;
 			}
 			free(p);
+			return (NULL);
 		}
 		for (l = 0, m = j - i; l < i; l++, m++)
 			p[k][l] = str[m];
