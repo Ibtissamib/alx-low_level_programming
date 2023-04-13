@@ -41,7 +41,6 @@ char **strtow(char *str)
 			j++;
 		}
 		p[k] = (char *)malloc(sizeof(char) * (i + 1));
-		printf("%ld\n", sizeof(p[k]));
 		if (p[k] == NULL)
 		{
 			while (k >= 0)
