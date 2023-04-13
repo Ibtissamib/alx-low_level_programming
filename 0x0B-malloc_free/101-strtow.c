@@ -13,10 +13,6 @@ char **strtow(char *str)
 	char **p;
 	int find = 0, i = 0, j = 0, k = 0, l = 0, m = 0, nbr = 0;
 
-	nbr = nbr_wrd(str);
-	p = (char **)malloc((nbr + 1) * sizeof(char *));
-	if ((p == NULL) || (str == NULL) || *str == '\0')
-		return (NULL);
 	while (str[j])
 	{
 		if (str[j] != ' ')
@@ -28,8 +24,12 @@ char **strtow(char *str)
 		else
 			j++;
 	}
+	if (find == 0 || str == NULL || *str == '\0')
+		return (NULL);
 	j = 0;
-	if (find == 0)
+	nbr = nbr_wrd(str);
+	p = (char **)malloc((nbr + 1) * sizeof(char *));
+	if (p == NULL)
 		return (NULL);
 	while (k < nbr)
 	{
