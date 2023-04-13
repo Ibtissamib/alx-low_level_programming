@@ -18,7 +18,7 @@ char **strtow(char *str)
 	nbr = nbr_wrd(str);
 	if (nbr == 0)
 		return (NULL);
-	p = (char **)malloc((nbr + 1) * sizeof(char *));
+	p = malloc(nbr * sizeof(p));
 	if (p == NULL)
 		return (NULL);
 	while (k < nbr)
@@ -30,7 +30,7 @@ char **strtow(char *str)
 			i++;
 			j++;
 		}
-		p[k] = (char *)malloc(sizeof(char) * (i + 1));
+		p[k] = malloc(sizeof(p[k]) * (i + 1));
 		if (p[k] == NULL)
 		{
 			while (k >= 0)
