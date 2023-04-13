@@ -7,6 +7,7 @@
  *
  * Return: pointer to character chain
  */
+int nbr_wrd(char *str);
 char **strtow(char *str)
 {
 	char **p;
@@ -35,8 +36,6 @@ char **strtow(char *str)
 			}
 			free(p);
 		}
-		printf("%ld\n", sizeof(p[k]));
-		printf("%d\n", i + 1);
 		for (l = 0, m = j - i; l < i; l++, m++)
 			p[k][l] = str[m];
 		p[k][i] = '\0';
