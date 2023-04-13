@@ -57,18 +57,6 @@ char **strtow(char *str)
 		i = 0;
 		k++;
 	}
-	p[k] = (char *)malloc(sizeof(char) * 1);
-	if (p[k] == NULL)
-	{
-		while (k >= 0)
-		{
-			free(p[k]);
-			k--;
-		}
-		free(p);
-		return (NULL);
-	}
-	p[k][0] = '\0';
 	return (p);
 }
 /**
