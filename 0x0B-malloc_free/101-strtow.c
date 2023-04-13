@@ -30,7 +30,7 @@ char **strtow(char *str)
 			i++;
 			j++;
 		}
-		p[k] = malloc(sizeof(char) * (i + 1));
+		p[k] = malloc(sizeof(char) * i);
 		if (p[k] == NULL)
 		{
 			while (k >= 0)
