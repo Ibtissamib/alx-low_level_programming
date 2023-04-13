@@ -41,6 +41,7 @@ char **strtow(char *str)
 			j++;
 		}
 		p[k] = (char *)malloc(sizeof(char) * (i + 1));
+		printf("%ld\n", sizeof(p[k]));
 		if (p[k] == NULL)
 		{
 			while (k >= 0)
@@ -57,6 +58,7 @@ char **strtow(char *str)
 		i = 0;
 		k++;
 	}
+	p[k] = '\0';
 	return (p);
 }
 /**
