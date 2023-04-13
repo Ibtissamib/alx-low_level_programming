@@ -7,42 +7,19 @@
  *
  * Return: pointer to character chain
  */
-int nbr_wrd(char *str)
-{
-	int len = 0, j = 0;
-	if (str[j] != '\0')
-		j++;
-	while (str[j] != '\0')
-	{
-		if ((str[j] == ' ') && (str[j - 1] != ' '))
-			len++;
-		j++;
-	}
-	if (str[j - 1] != ' ')
-		len++;
-	return (len);
-}
 char **strtow(char *str)
 {
 	char **p;
-	int i = 0, j = 0, k = 0, l = 0, nbr = 0;
+	int i = 0, j = 0, k = 0, l = 0, m = 0, nbr = 0;
 
 	nbr = nbr_wrd(str);
-	printf("taille %d\n", nbr);
-	if (str == NULL)
-		return (NULL);
 	p = (char **)malloc(nbr * sizeof(char *));
-	if (p == NULL)
-	{
-		printf("error\n");
+	if ((p == NULL) || (str == NULL))
 		return (NULL);
-	}
-	else
-		printf("sucess\n");
 	while (k < nbr)
 	{
 		while (str[j] == ' ')
-		       j++;
+			j++;
 		while (str[j] != ' ')
 		{
 			i++;
@@ -58,27 +35,35 @@ char **strtow(char *str)
 			}
 			free(p);
 		}
-		else
-			printf("success %d taille %d\n", k, i + 1);
+		printf("%ld\n", sizeof(p[k]));
+		printf("%d\n", i + 1);
+		for (l = 0, m = j - i; l < i; l++, m++)
+			p[k][l] = str[m];
+		p[k][i] = '\0';
 		i = 0;
 		k++;
 	}
-	k = 0;
-	l = 0;
-	j = 0;
-	while (k < nbr) 
-	{
-		while (str[j] == ' ')
-			j++;
-		while (str[j] != ' ')
-		{
-			p[k][l] = str[j];
-			l++;
-			j++;
-		}
-		p[k][l] = '\0';
-		l = 0;
-		k++;
-	}
 	return (p);
+}
+/**
+ * nbr_wrd- returns number of words in character chain
+ * @str: pointer to char
+ *
+ * Return: Integer
+ */
+int nbr_wrd(char *str)
+{
+	int len = 0, j = 0;
+
+	if (str[j] != '\0')
+		j++;
+	while (str[j] != '\0')
+	{
+		if ((str[j] == ' ') && (str[j - 1] != ' '))
+			len++;
+		j++;
+	}
+	if (str[j - 1] != ' ')
+		len++;
+	return (len);
 }
