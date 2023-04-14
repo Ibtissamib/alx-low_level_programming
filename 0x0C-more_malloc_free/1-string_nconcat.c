@@ -22,8 +22,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		len2++;
 	}
-	printf("%d et %d \n", len1, len2);
-	s = malloc(len1 + n);
+	if (n < len2)
+		s = malloc(len1 + n + 1);
+	else
+		s = malloc(len1 + len2 + 1);
 	if (s == NULL)
 		return (NULL);
 	while (s1[i])
@@ -38,5 +40,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		j++;
 		n--;
 	}
+	s[i] = '\0';
 	return (s);
 }
