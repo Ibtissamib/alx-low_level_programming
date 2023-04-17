@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include <stdio.h>
+#include <stdlib.h>
 /**
  * struct dog - Define a new type struct dog
  * @name: pointer to char
