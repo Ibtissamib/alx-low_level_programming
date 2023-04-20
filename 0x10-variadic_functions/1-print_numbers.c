@@ -12,7 +12,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	unsigned int i = 0;
 	va_list nbrs;
 
-	if (n == 0 || separator == NULL || (separator[0] != ',' || separator[1] != ' '))
+	if (n == 0 || separator == NULL)
 	{
 		printf("\n");
 		return;
