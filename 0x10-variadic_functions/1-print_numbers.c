@@ -12,11 +12,6 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	unsigned int i = 0;
 	va_list nbrs;
 
-	if (n == 0 || separator == NULL)
-	{
-		printf("\n");
-		return;
-	}
 	va_start(nbrs, n);
 	while (i < n)
 	{
