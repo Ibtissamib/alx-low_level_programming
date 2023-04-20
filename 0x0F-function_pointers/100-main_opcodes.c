@@ -24,10 +24,9 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(2);
 	}
-	while (nbr > 0)
+	while (nbr--)
 	{
 		printf("%02hhx%s", *s++, nbr ? " " : "\n");
-		nbr--;
 	}
 	return (0);
 }
