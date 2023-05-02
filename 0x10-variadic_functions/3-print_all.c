@@ -1,10 +1,14 @@
 #include "variadic_functions.h"
 #include <stdarg.h>
 #include <stdio.h>
-void print_string(const char *s)
-{
-	printf("%s", (s == NULL || s[0] == '\0') ? "(nil)" : s);
-}
+/**
+ * nbr_types-returns number of types in format
+ * @format: const pointer to char
+ * @n: number of types
+ * i: integer to increment
+ *
+ * Return: Integer
+ */
 int nbr_types(const char *format, int n, int i)
 {
 
@@ -31,25 +35,14 @@ int nbr_types(const char *format, int n, int i)
 	}
 	return (n);
 }
-
 /**
- * print_all- prints anything.
- * @format: conts pointer to const char
- * @...: something to print
- *
- * Return: void
+ * print_types-prints
+ * @
+ * @
+ * @
  */
-void print_all(const char * const format, ...)
+void print_types(const char *format, int n, int i, int j, int k, int a,float b, char c, char *s, va_list ap)
 {
-	int a, n, i = 0, j = 0, k = 0;
-	float b;
-	char c, *s;
-	va_list ap;
-
-	if (format == NULL || format[0] == '\0')
-		return;
-	va_start(ap, format);
-	n = nbr_types(format, 0, 0);
 	while (format && format[i])
 	{	
 		switch (format[i])
@@ -69,7 +62,7 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				s = va_arg(ap, char *);
-				print_string(s);
+				printf("%s", (s == NULL || s[0] == '\0') ? "(nil)" : s);
 				i++;
 				j = 1;
 				k++;
@@ -87,5 +80,30 @@ void print_all(const char * const format, ...)
 				break; }
 	if (j == 1 && k < n)
 		printf(", "); }
+
+}
+
+/**
+ * print_all- prints anything.
+ * @format: conts pointer to const char
+ * @...: something to print
+ *
+ * Return: void
+ */
+void print_all(const char * const format, ...)
+{
+	int a = 0, n;
+	float b = 0;
+	char c = 'c', *s = "ab";
+	va_list ap;
+
+	if (format == NULL || format[0] == '\0')
+	{
+		printf("(nil)\n");
+		return;
+	}
+	va_start(ap, format);
+	n = nbr_types(format, 0, 0);
+	print_types(format, n, 0, 0, 0, a, b, c, s, ap);
 	printf("\n");
 	va_end(ap); }
