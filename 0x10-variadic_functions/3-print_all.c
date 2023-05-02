@@ -5,7 +5,7 @@
  * nbr_types-returns number of types in format
  * @format: const pointer to char
  * @n: number of types
- * i: integer to increment
+ * @i: integer to increment
  *
  * Return: Integer
  */
@@ -37,14 +37,24 @@ int nbr_types(const char *format, int n, int i)
 }
 /**
  * print_types-prints
- * @
- * @
- * @
+ * @format: const pointer to char
+ * @n: Integer, nbr of types
+ * @i: Integer to increment
+ * @j: Integer 1 if type is found 0 otherwise, helps to decide to print ", "
+ * @k: Integer to increment, helps to decide to print ", " or no
+ * @a: Integer to print
+ * @b: float to print
+ * @c: char to print
+ * @s: pointer to char to print
+ * @ap: va_list
+ *
+ * Return: void
  */
-void print_types(const char *format, int n, int i, int j, int k, int a,float b, char c, char *s, va_list ap)
+void print_types(const char *format, int n, int i, int j, int k, int a, float b
+		, char c, char *s, va_list ap)
 {
 	while (format && format[i])
-	{	
+	{
 		switch (format[i])
 		{	case 'c':
 				c = va_arg(ap, int);
