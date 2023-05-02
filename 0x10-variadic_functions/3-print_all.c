@@ -22,17 +22,10 @@ void print_all(const char * const format, ...)
 		while (format[i] != 's' && format[i] != 'c' && format[i] != 'i'
 				&& format[i] != 'f')
 			i++;
-		/**else
-		{
-			a = va_arg(ap, int);
-			printf("%d", a);
-			i++;
-		}*/
-
 		if (format[i] == 'c')
 		{
 			c = va_arg(ap, int);
-			printf("%c, ",c);
+			printf("%c, ", c);
 		}
 		else if (format[i] == 'i')
 		{
