@@ -99,7 +99,7 @@ void print_all(const char * const format, ...)
 
 	if (format == NULL || format[0] == '\0')
 	{
-		printf("(nil)\n");
+		printf("\n");
 		return;
 	}
 	va_start(ap, format);
