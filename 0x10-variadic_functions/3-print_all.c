@@ -18,12 +18,11 @@ void print_all(const char * const format, ...)
 
 	va_start(ap, format);
 	if (format == NULL)
-		return;
+		printf("(nil)");
 	while (format[i])
 	{
 		switch (format[i])
-		{
-			case 'c':
+		{	case 'c':
 				c = va_arg(ap, int);
 				printf("%c, ", c);
 				i++;
@@ -47,9 +46,6 @@ void print_all(const char * const format, ...)
 				break;
 			default:
 				i++;
-				break;
-		}
-	}
+				break; } }
 	printf("\n");
-	va_end(ap);
-}
+	va_end(ap); }
