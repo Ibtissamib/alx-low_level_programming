@@ -1,6 +1,41 @@
 #include "variadic_functions.h"
 #include <stdarg.h>
 #include <stdio.h>
+void print_string(const char *s)
+{
+	if (s == NULL || s[0] == '\0')
+		printf("(nil)");
+	else
+		printf("%s", s);
+}
+int nbr_types(char *format)
+{
+	int n = 0, i = 0;
+
+	while (format && format[i])
+	{
+		switch (format[i])
+		{
+			case 'c':
+				n++;
+				break;
+			case 's':
+				n++;
+				break;
+			case 'i':
+				n++;
+				break;
+			case 'f':
+				n++;
+				break;
+			default:
+				break;
+		}
+		i++;
+	}
+	return (n);
+}
+
 /**
  * print_all- prints anything.
  * @format: conts pointer to const char
@@ -10,23 +45,18 @@
  */
 void print_all(const char * const format, ...)
 {
-	int a, n = 0, i = 0, j = 0, k = 0;
-	double b;
-	char c;
-	char *s;
+	int a, n, i = 0, j = 0, k = 0;
+	float b;
+	char c, *s;
 	va_list ap;
 
+	if (format == NULL || format[0] == '\0')
+		return;
 	va_start(ap, format);
-	if (format == NULL)
-		printf("(nil)");
-	while (format[i])
-	{	if (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' ||
-			format[i] == 's')
-			n++;
-		i++; }
-	i = 0;
-	while (format[i])
-	{	switch (format[i])
+	n = nbr_types(format);
+	while (format && format[i])
+	{	
+		switch (format[i])
 		{	case 'c':
 				c = va_arg(ap, int);
 				printf("%c", c);
@@ -43,9 +73,7 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				s = va_arg(ap, char *);
-				if (s == NULL)
-					s = "(nil)";
-				printf("%s", s);
+				print_string(s);
 				i++;
 				j = 1;
 				k++;
