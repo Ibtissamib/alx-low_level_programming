@@ -3,14 +3,10 @@
 #include <stdio.h>
 void print_string(const char *s)
 {
-	if (s == NULL || s[0] == '\0')
-		printf("(nil)");
-	else
-		printf("%s", s);
+	printf("%s", (s == NULL || s[0] == '\0') ? "(nil)" : s);
 }
-int nbr_types(const char *format)
+int nbr_types(const char *format, int n, int i)
 {
-	int n = 0, i = 0;
 
 	while (format && format[i])
 	{
@@ -53,7 +49,7 @@ void print_all(const char * const format, ...)
 	if (format == NULL || format[0] == '\0')
 		return;
 	va_start(ap, format);
-	n = nbr_types(format);
+	n = nbr_types(format, 0, 0);
 	while (format && format[i])
 	{	
 		switch (format[i])
