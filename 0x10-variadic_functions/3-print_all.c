@@ -8,7 +8,7 @@ void print_string(const char *s)
 	else
 		printf("%s", s);
 }
-int nbr_types(char *format)
+int nbr_types(const char *format)
 {
 	int n = 0, i = 0;
 
