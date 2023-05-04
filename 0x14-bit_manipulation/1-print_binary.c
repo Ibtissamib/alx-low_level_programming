@@ -9,8 +9,8 @@ void print_binary(unsigned long int n)
 {
 	unsigned int p = 1;
 
-	if (n == 0 || n == 1)
-		_putchar(n + '0');
+	if (n == 0)
+		_putchar('0');
 	while (n >= p)
 		p = p * 2;
 	p = p / 2;
