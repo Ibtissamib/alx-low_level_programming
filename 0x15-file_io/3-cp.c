@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
 	int fd_from, fd_to;
-	ssize_t n_from = 0, n_to = 0;
+	ssize_t n = 0;
 	char buf[1024];
 
 	if (argc != 3)
@@ -29,12 +29,19 @@ int main(int argc, char **argv)
 		dprintf(2, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-	n_from = read(fd_from, &buf[0], 1024);
-	n_to = write(fd_to, &buf[0], n_from);
-	close(fd_from);
-	close(fd_to);
-	if (n_to == n_from)
-		return (1);
-	else
-		return (-1);
+	n = read(fd_from, &buf[0], 1024);
+	n = write(fd_to, &buf[0], n);
+	fd_from = close(fd_from);
+	fd_to = close(fd_to);
+	if (fd_from)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", fd_from);
+		exit(100);
+	}
+	if (fd_to)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", fd_to);
+		exit(100);
+	}
+	return (0);
 }
