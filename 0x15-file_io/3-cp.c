@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 	}
 	if (fd_to)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd_from);
+		dprintf(2, "Error: Can't close fd %d\n", fd_to);
 		exit(100);
 	}
 	return (0);
