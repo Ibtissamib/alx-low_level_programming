@@ -178,7 +178,7 @@ int main(int ac, char **av)
 		exit(98); }
 	printf("ELF Header:\n  Magic:   ");
 	for (i = 0; i < 16; i++)
-	{	if ((buf[i] == 0 || buf[i] == 1) && i != 15)
+	{	if ((buf[i] < 9) && i != 15)
 			printf("0%x ", buf[i]);
 		else if (i == 15)
 			printf("0%x\n", buf[i]);
@@ -193,7 +193,7 @@ int main(int ac, char **av)
 	{	print_type(buf[16]);
 		printf("  Entry point address:               0x%x%x\n", buf[25], buf[24]); }
 	else if (buf[5] == 2)
-	{	print_type(buf[16]);
+	{	print_type(buf[17]);
 		printf("  Entry point address:               0x%x%x\n", buf[24], buf[25]); }
 	close(fd);
 	return (0);
