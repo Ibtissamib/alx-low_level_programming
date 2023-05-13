@@ -35,10 +35,10 @@ void print_data(char c)
 	printf("  Data:                              ");
 	switch (c)
 	{
-		case 0 :
+		case 0:
 			printf("none");
 			break;
-		case 1 :
+		case 1:
 			printf("2's complement, little endian");
 			break;
 		case 2:
@@ -63,7 +63,7 @@ void print_version(char c)
 			printf("1 (current)");
 			break;
 		default:
-			printf("%c",c);
+			printf("%c", c);
 			break;
 	}
 	printf("\n");
@@ -76,11 +76,9 @@ void print_version(char c)
  */
 
 void print_OSABI(char c)
-{
-	printf("  OS/ABI:                            ");
+{	printf("  OS/ABI:                            ");
 	switch (c)
-	{
-		case 0:
+	{	case 0:
 			printf("UNIX - System V");
 			break;
 		case 1:
@@ -121,10 +119,8 @@ void print_OSABI(char c)
 			break;
 		default:
 			printf("<unknown: %x>", c);
-			break;
-	}
-	printf("\n");
-}
+			break; }
+	printf("\n"); }
 /**
  * print_ABI- prints
  * @c: char
@@ -135,7 +131,28 @@ void print_ABI_Version(char c)
 {
 	printf("  ABI Version:                       %x\n", c);
 }
-
+void print_type(char c)
+{
+	printf("  Type:                              ");
+	switch (c)
+	{
+		case 0:
+			printf("none");
+			break;
+		case 1:
+			printf("RELOC (Relocatable file)");
+			break;
+		case 2:
+			printf("EXEC (Executable file)");
+			break;
+		case 3: printf("DYN (Shared object file)");
+			break;
+		case 4:
+			printf("Core file");
+			break;
+	}
+	printf("\n");
+}
 /**
  * main-Entry point copies the content of a file to another file.
  * @ac: Integer
@@ -146,40 +163,38 @@ void print_ABI_Version(char c)
 int main(int ac, char **av)
 {
 	int fd, i;
-	unsigned char buf[3000];
+	unsigned char buf[100];
 
 	if (ac != 2)
-	{
-		dprintf(2, "Usage: elf_header elf_filename\n");
-		exit(98);
-	}
+	{	dprintf(2, "Usage: elf_header elf_filename\n");
+		exit(98); }
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
-	{
-		dprintf(2, "Error: Can't read from %s\n", av[1]);
-		exit(98);
-	}
-	read(fd, buf, 3000);
+	{	dprintf(2, "Error: Can't read from %s\n", av[1]);
+		exit(98); }
+	read(fd, buf, 100);
 	if (buf[0] != 127 || buf[1] != 69 || buf[2] != 76 || buf[3] != 70)
-	{
-		dprintf(2, "Error: %s is not ELF file\n", av[1]);
-		exit(98);
-	}
+	{	dprintf(2, "Error: %s is not ELF file\n", av[1]);
+		exit(98); }
 	printf("ELF Header:\n  Magic:   ");
 	for (i = 0; i < 16; i++)
-	{
-		if ((buf[i] == 0 || buf[i] == 1) && i != 15)
-		       	printf("0%x ", buf[i]);
+	{	if ((buf[i] == 0 || buf[i] == 1) && i != 15)
+			printf("0%x ", buf[i]);
 		else if (i == 15)
 			printf("0%x\n", buf[i]);
 		else
-			printf("%x ", buf[i]);
-	}
+			printf("%x ", buf[i]); }
 	print_class(buf[4]);
 	print_data(buf[5]);
 	print_version(buf[6]);
 	print_OSABI(buf[7]);
 	print_ABI_Version(buf[8]);
+	if (buf[5] == 1)
+	{	print_type(buf[16]);
+		printf("  Entry point address:               0x%x%x\n", buf[25], buf[24]); }
+	else if (buf[5] == 2)
+	{	print_type(buf[17]);
+		printf("  Entry point address:               0x%x%x\n", buf[24], buf[25]); }
 	close(fd);
 	return (0);
 }
