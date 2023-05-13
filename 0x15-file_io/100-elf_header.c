@@ -193,7 +193,7 @@ int main(int ac, char **av)
 	{	print_type(buf[16]);
 		printf("  Entry point address:               0x%x%x\n", buf[25], buf[24]); }
 	else if (buf[5] == 2)
-	{	print_type(buf[17]);
+	{	print_type(buf[16]);
 		printf("  Entry point address:               0x%x%x\n", buf[24], buf[25]); }
 	close(fd);
 	return (0);
