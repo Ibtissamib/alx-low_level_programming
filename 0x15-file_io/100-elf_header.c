@@ -23,6 +23,13 @@ void print_class(char c)
 	}
 	printf("\n");
 }
+/**
+ * print_data- prints
+ * @c: char
+ *
+ * Return: void
+ */
+
 void print_data(char c)
 {
 	printf("  Data:                              ");
@@ -40,6 +47,13 @@ void print_data(char c)
 	}
 	printf("\n");
 }
+/**
+ * print_version- prints
+ * @c: char
+ *
+ * Return: void
+ */
+
 void print_version(char c)
 {
 	printf("  Version:                           ");
@@ -54,6 +68,13 @@ void print_version(char c)
 	}
 	printf("\n");
 }
+/**
+ * print_OSABI- prints
+ * @c: char
+ *
+ * Return: void
+ */
+
 void print_OSABI(char c)
 {
 	printf("  OS/ABI:                            ");
@@ -104,15 +125,17 @@ void print_OSABI(char c)
 	}
 	printf("\n");
 }
+/**
+ * print_ABI- prints
+ * @c: char
+ *
+ * Return: void
+ */
 void print_ABI_Version(char c)
 {
 	printf("  ABI Version:                       %x\n", c);
 }
-/**void print_type(char c)
-{
 
-}
-void print_ETA(char c)*/
 /**
  * main-Entry point copies the content of a file to another file.
  * @ac: Integer
@@ -157,11 +180,6 @@ int main(int ac, char **av)
 	print_version(buf[6]);
 	print_OSABI(buf[7]);
 	print_ABI_Version(buf[8]);
-/**	print_type(buf[11]);
-	print_ETA(buf[14]);
-	printf("%c %c %c %c %c\n",buf[1599],  buf[1600], buf[1601], buf[1602], buf[1603]);*/
 	close(fd);
 	return (0);
-
-
 }
