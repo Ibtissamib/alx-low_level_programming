@@ -192,9 +192,12 @@ int main(int ac, char **av)
 	if (buf[5] == 1)
 	{	print_type(buf[16]);
 		printf("  Entry point address:               0x");
-		for (i = 25; i >= 22; i--)
-			if (buf[i] != 0)
-				printf("%x", buf[i]); }
+		for (i = 27; i >= 24; i--)
+		{
+			if (buf[i] <= 9 && i != 27 && buf[i] != 0)
+				printf("0%x", buf[i]);
+			else if (buf[i] != 0)
+				printf("%x", buf[i]);} }
 	else if (buf[5] == 2)
 	{	print_type(buf[17]);
 		printf("  Entry point address:               0x");
