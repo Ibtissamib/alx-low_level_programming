@@ -162,7 +162,7 @@ void print_type(char c)
  */
 int main(int ac, char **av)
 {
-	int fd, i;
+	int fd, i, j;
 	unsigned char buf[100];
 
 	if (ac != 2)
@@ -192,23 +192,36 @@ int main(int ac, char **av)
 	if (buf[5] == 1)
 	{	print_type(buf[16]);
 		printf("  Entry point address:               0x");
-		for (i = 27; i >= 24; i--)
-		{
-			if (buf[i] <= 9 && i != 27 && buf[i] != 0)
-				printf("0%x", buf[i]);
-			else if (buf[i] != 0)
-				printf("%x", buf[i]);} }
+		if (buf[27] == 0 && buf[26] == 0)
+                                printf("%x%x", buf[25], buf[24]);
+		else
+			for (i = 27; i >= 24; i--)
+			{
+				if (i != 27 && buf[i] <= 15)
+					printf("0%x", buf[i]);
+				else
+					printf("%x", buf[i]);
+			}
+	} 
 	else if (buf[5] == 2)
 	{	print_type(buf[17]);
 		printf("  Entry point address:               0x");
-		for (i = 24; i <= 27; i++)
+		i = 24;
+		while (i <= 27 && buf[i] == 0)
+			i++;
+		j = i;
+		while (i <= 27)
 		{
-			if (buf[i] <= 9 && i != 24 && buf[i] != 0)
+			if (buf[i] <= 15 && i != j && buf[i] != 0)
                                 printf("0%x", buf[i]);
 			else if (buf[i] != 0)
-				printf("%x", buf[i]);}
+				printf("%x", buf[i]);
+		i++;
+		}
        	}
 	printf("\n");
+	for (i = 16; i <= 30; i++)
+		printf("%x ", buf[i]);
 	close(fd);
 	return (0);
 }
