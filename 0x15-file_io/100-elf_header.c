@@ -197,7 +197,7 @@ int main(int ac, char **av)
 		else
 			for (i = 27; i >= 24; i--)
 			{
-				if (i != 27 && buf[i] <= 9)
+				if (i != 27 && buf[i] <= 15)
 					printf("0%x", buf[i]);
 				else
 					printf("%x", buf[i]);
@@ -220,8 +220,6 @@ int main(int ac, char **av)
 		}
        	}
 	printf("\n");
-	for (i = 16; i <= 30; i++)
-		printf("%x ", buf[i]);
 	close(fd);
 	return (0);
 }
