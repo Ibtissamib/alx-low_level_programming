@@ -1,6 +1,56 @@
 #include "main.h"
 #include <unistd.h>
 /**
+ * print_EPA_LE- prints Entry point address for Little Endian
+ * @buf: unsigned char
+ *
+ * Return: void
+ */
+void print_EPA_LE(unsigned char *buf)
+{
+	int i, j;
+
+	printf("  Entry point address:               0x");
+	i = 11;
+	while (i >= 8 && buf[i] == 0)
+		i--;
+	j = i;
+	while (i >= 8)
+	{
+		if (i != j && buf[i] <= 15)
+			printf("0%x", buf[i]);
+		else
+			printf("%x", buf[i]);
+		i--;
+	}
+}
+/**
+ * print_EPA_BE- prints Entry point address for big Endian
+ * @buf: unsigned char
+ *
+ * Return: void
+ */
+
+void print_EPA_BE(unsigned char *buf)
+{
+	int i, j;
+
+	printf("  Entry point address:               0x");
+	i = 8;
+	while (i <= 11 && buf[i] == 0)
+		i++;
+	j = i;
+	while (i <= 11)
+	{
+		if (buf[i] <= 15 && i != j && buf[i] != 0)
+			printf("0%x", buf[i]);
+		else if (buf[i] != 0)
+			printf("%x", buf[i]);
+	i++;
+	}
+}
+
+/**
  * print_class-prints class
  * @c: Character
  *
@@ -110,7 +160,7 @@ void print_OSABI(char c)
 	printf("\n");
 }
 /**
- * print_ABI_version- prints
+ * print_ABI_Version- prints ABI Version
  * @c: char
  *
  * Return: void
@@ -157,8 +207,9 @@ void print_type(char c)
  */
 int main(int ac, char **av)
 {
-	int fd, i, j;
-	unsigned char buf[100];
+	int fd, i;
+	char c;
+	unsigned char buf[16], b[12];
 
 	if (ac != 2)
 	{	dprintf(2, "Usage: elf_header elf_filename\n");
@@ -167,7 +218,7 @@ int main(int ac, char **av)
 	if (fd == -1)
 	{	dprintf(2, "Error: Can't read from %s\n", av[1]);
 		exit(98); }
-	read(fd, buf, 100);
+	read(fd, buf, 16);
 	if (buf[0] != 127 || buf[1] != 69 || buf[2] != 76 || buf[3] != 70)
 	{	dprintf(2, "Error: %s is not ELF file\n", av[1]);
 		exit(98); }
@@ -185,39 +236,15 @@ int main(int ac, char **av)
 	print_version(buf[6]);
 	print_OSABI(buf[7]);
 	print_ABI_Version(buf[8]);
-	if (buf[5] == 1)
-	{	print_type(buf[16]);
-		printf("  Entry point address:               0x");
-		i = 27;
-		while (i >= 24 && buf[i] == 0)
-			i--;
-		j = i;
-		while (i >= 24)
-		{
-			if (i != j && buf[i] <= 15)
-				printf("0%x", buf[i]);
-			else
-				printf("%x", buf[i]);
-			i--;
-		}
-	}
-	else if (buf[5] == 2)
-	{	print_type(buf[17]);
-		printf("  Entry point address:               0x");
-		i = 24;
-		while (i <= 27 && buf[i] == 0)
-			i++;
-		j = i;
-		while (i <= 27)
-		{
-			if (buf[i] <= 15 && i != j && buf[i] != 0)
-				printf("0%x", buf[i]);
-			else if (buf[i] != 0)
-				printf("%x", buf[i]);
-		i++;
-		}
-	}
+	c = buf[5];
+	lseek(fd, 0, SEEK_CUR);
+	read(fd, b, 12);
+	if (c == 1)
+	{	print_type(b[0]);
+		print_EPA_LE(b); }
+	else if (c == 2)
+	{	print_type(b[1]);
+		print_EPA_BE(b); }
 	printf("\n");
 	close(fd);
-	return (0);
-}
+	return (0); }
