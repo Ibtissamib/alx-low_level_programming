@@ -1,6 +1,4 @@
 #include "main.h"
-#define EV_NONE 0
-#define EV_CURRENT 1
 #include <unistd.h>
 /**
  * print_class-prints class
