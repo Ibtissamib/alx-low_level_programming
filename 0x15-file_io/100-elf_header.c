@@ -205,7 +205,7 @@ int main(int ac, char **av)
 		{
 			if (buf[i] <= 9 && i != 24 && buf[i] != 0)
                                 printf("0%x", buf[i]);
-			else
+			else if (buf[i] != 0)
 				printf("%x", buf[i]);}
        	}
 	printf("\n");
