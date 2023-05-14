@@ -197,7 +197,7 @@ int main(int ac, char **av)
 		else
 			for (i = 27; i >= 24; i--)
 			{
-				if (i != 27 && buf[i] <= 15)
+				if (i != 27 && buf[i] <= 9)
 					printf("0%x", buf[i]);
 				else
 					printf("%x", buf[i]);
