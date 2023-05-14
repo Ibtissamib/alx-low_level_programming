@@ -66,7 +66,7 @@ void print_version(char c)
 			printf("1 (current)");
 			break;
 		default:
-			printf("%c", c - 1);
+			printf("%x", c - 1);
 			break;
 	}
 	printf("\n");
