@@ -180,7 +180,7 @@ int main(int ac, char **av)
 	for (i = 0; i < 16; i++)
 	{	if ((buf[i] < 9) && i != 15)
 			printf("0%x ", buf[i]);
-		else if (i == 15)
+		else if ((buf[i] < 9) && i == 15)
 			printf("0%x\n", buf[i]);
 		else
 			printf("%x ", buf[i]); }
@@ -191,10 +191,18 @@ int main(int ac, char **av)
 	print_ABI_Version(buf[8]);
 	if (buf[5] == 1)
 	{	print_type(buf[16]);
-		printf("  Entry point address:               0x%x%x\n", buf[25], buf[24]); }
+		printf("  Entry point address:               0x");
+		for (i = 25; i >= 22; i--)
+			if (buf[i] != 0)
+				printf("%x", buf[i]); }
 	else if (buf[5] == 2)
 	{	print_type(buf[17]);
-		printf("  Entry point address:               0x%x%x\n", buf[24], buf[25]); }
+		printf("  Entry point address:               0x");
+		for (i = 22; i <= 25; i--)
+                        if (buf[i] != 0)
+                                printf("%x", buf[i]);
+       	}
+	printf("\n");
 	close(fd);
 	return (0);
 }
