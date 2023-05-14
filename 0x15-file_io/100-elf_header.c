@@ -1,4 +1,6 @@
 #include "main.h"
+#define EV_NONE 0
+#define EV_CURRENT 1
 #include <unistd.h>
 /**
  * print_class-prints class
@@ -59,14 +61,14 @@ void print_version(char c)
 	printf("  Version:                           ");
 	switch (c)
 	{
-		case 0:
+		case EV_NONE:
 			printf("Invalid");
 			break;
-		case 1:
+		case EV_CURRENT:
 			printf("1 (current)");
 			break;
 		default:
-			printf("%x", c - 1);
+			printf("%c", c);
 			break;
 	}
 	printf("\n");
