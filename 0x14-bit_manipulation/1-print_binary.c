@@ -8,40 +8,25 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int p = 1, p1 = 0;
+	unsigned long int bt = 1UL << ((sizeof(unsigned long int) * 8) - 1);
+	int start = 0;
 
-	if (n == 0 || n == 1)
-		_putchar(n + '0');
-	else
+	if (n == 0)
 	{
-		while (n >= p)
-			p = p * 2;
-		while (p1 < p)
-		{	p = p - 2;
-			p1 = p1 + 2; }
-		while (p != 2)
-		{	n = n - p;
+		_putchar('0');
+		return;
+	}
+	while (bt != 0)
+	{
+		if ((n & bt) != 0)
+		{
 			_putchar('1');
-			p1 = 0;
-			while (p1 < p)
-			{	p = p - 2;
-				p1 = p1 + 2; }
-			while (p != 2 && n < p)
-			{	_putchar('0');
-				 p1 = 0;
-				while (p1 < p)
-				{	p = p - 2;
-					p1 = p1 + 2; } } }
-		if (n == 3)
-		{	_putchar('1');
-			_putchar('1'); }
-		else if (n == 2)
-		{	_putchar('1');
-			_putchar('0'); }
-		else if (n == 1)
-		{	_putchar('0');
-			_putchar('1'); }
-		else
-		{	_putchar('0');
-			_putchar('0'); } } }
+			start = 1;
+		}
+		else if (start == 1)
+			_putchar('0');
+		bt = bt >> 1;
+	}
+
+}
 
