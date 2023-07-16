@@ -66,6 +66,7 @@ int nbr_wrd(char *str)
 			len++;
 		j++;
 	}
+	free(str);
 	return (len);
 }
 
