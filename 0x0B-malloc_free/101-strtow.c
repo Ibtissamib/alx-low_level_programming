@@ -45,7 +45,8 @@ char **strtow(char *str)
 			p[k][l] = str[m];
 		p[k][i] = '\0';
 		i = 0;
-		k++;
+		if (k != (nbr - 1))
+			k++;
 	}
 	return (p);
 }
