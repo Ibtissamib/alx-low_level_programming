@@ -23,12 +23,12 @@ char **strtow(char *str)
 		return (NULL);
 	while (k < nbr)
 	{
-		while (str[j] == ' ')
+		while (str[j] && str[j] == ' ')
 		{
 			j++;
 		}
 		m = j;
-		while (str[j] != ' ')
+		while (str[j] && str[j] != ' ')
 		{
 			i++;
 			j++;
