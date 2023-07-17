@@ -50,6 +50,7 @@ char **strtow(char *str)
 		i = 0;
 		k++;
 	}
+	p[k] = '\0';
 	return (p);
 }
 /**
