@@ -28,7 +28,8 @@ char **strtow(char *str)
 		{
 			j++;
 		}
-		while(str[j] != ' ')
+		m = j;
+		while (str[j] != ' ')
 		{
 			i++;
 			j++;
@@ -44,13 +45,13 @@ char **strtow(char *str)
 			free(p);
 			return (NULL);
 		}
-		for (l = 0, m = j - i  ; l < i; l++, m++)
+		for (l = 0 ; l < i; l++, m++)
 			p[k][l] = str[m];
 		p[k][l] = '\0';
 		i = 0;
 		k++;
 	}
-	p[k] = '\0';
+	p[k] = NULL;
 	return (p);
 }
 /**
