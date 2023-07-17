@@ -24,13 +24,15 @@ char **strtow(char *str)
 	while (k < nbr)
 	{
 		while (str[j] == ' ')
+		{
 			j++;
-		while (str[j] != ' ')
+		}
+		while(str[j] != ' ')
 		{
 			i++;
 			j++;
 		}
-		p[k] = malloc(sizeof(char) * (i + 1));
+		p[k] = (char *)malloc(sizeof(char) * (i + 1));
 		if (p[k] == NULL)
 		{
 			while (k >= 0)
@@ -41,12 +43,11 @@ char **strtow(char *str)
 			free(p);
 			return (NULL);
 		}
-		for (l = 0, m = j - i; l < i; l++, m++)
+		for (l = 0, m = j - i  ; l < i; l++, m++)
 			p[k][l] = str[m];
-		p[k][i] = '\0';
+		p[k][l] = '\0';
 		i = 0;
-		if (k != (nbr - 1))
-			k++;
+		k++;
 	}
 	return (p);
 }
@@ -59,10 +60,13 @@ char **strtow(char *str)
 int nbr_wrd(char *str)
 {
 	int len = 0, j = 0;
+	if ((str[j] != ' ') && (j == 0))
+		len++;
 
+	j = 1;
 	while (str[j] != '\0')
 	{
-		if ((str[j] != ' ') && ((str[j - 1] == ' ') || (j == 0)))
+		if ((str[j] != ' ') && (str[j - 1] == ' '))
 			len++;
 		j++;
 	}
