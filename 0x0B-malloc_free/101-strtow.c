@@ -11,18 +11,17 @@ int nbr_wrd(char *str);
 char **strtow(char *str)
 {
 	char **p;
-	int i = 0, j = 0, k = 0, l = 0, m = 0, nbr = 0;
+	int i = 0, j = 0, k = 0, l = 0, m = 0, nbr;
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
 	nbr = nbr_wrd(str);
 	if (nbr == 0)
 		return (NULL);
-	nbr++;
 	p = (char **)malloc(nbr * sizeof(char *));
 	if (p == NULL)
 		return (NULL);
-	while (k < nbr - 1)
+	while (k < nbr)
 	{
 		while (str[j] == ' ')
 		{
