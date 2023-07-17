@@ -65,12 +65,9 @@ int nbr_wrd(char *str)
 {
 	int len = 0, j = 0;
 
-	if (str[0] != ' ')
-		len++;
-	j = 1;
 	while (str[j] != '\0')
 	{
-		if (str[j] != ' ' &&  str[j - 1] == ' ')
+		if (str[j] != ' ' &&  (j == 0 || str[j - 1] == ' '))
 			len++;
 		j++;
 	}
