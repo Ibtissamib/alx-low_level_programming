@@ -22,7 +22,7 @@ char **strtow(char *str)
 	p = (char **)malloc(nbr * sizeof(char *));
 	if (p == NULL)
 		return (NULL);
-	while (k < nbr)
+	while (k < nbr - 1)
 	{
 		while (str[j] == ' ')
 		{
