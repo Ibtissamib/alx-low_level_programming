@@ -51,7 +51,7 @@ char **strtow(char *str)
 		i = 0;
 		k++;
 	}
-	p[k] = NULL;
+	p[k] = '\0';
 	return (p);
 }
 /**
