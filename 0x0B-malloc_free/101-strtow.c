@@ -52,7 +52,6 @@ char **strtow(char *str)
 	}
 	/**p[k] = (char *)malloc(sizeof(char));*/
 	/**p[k] = NULL;*/
-	p[k] = '\0';
 	return (p);
 }
 /**
