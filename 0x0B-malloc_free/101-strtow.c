@@ -18,7 +18,7 @@ char **strtow(char *str)
 	nbr = nbr_wrd(str);
 	if (nbr == 0)
 		return (NULL);
-	/**nbr++;*/
+	nbr++;
 	p = (char **)malloc(nbr * sizeof(char *));
 	if (p == NULL)
 		return (NULL);
@@ -51,9 +51,9 @@ char **strtow(char *str)
 		i = 0;
 		k++;
 	}
-	/**p[k] = (char *)malloc(sizeof(char));
+	/**p[k] = (char *)malloc(sizeof(char));*/
 	p[k] = NULL;
-	p[k] = '\0';*/
+	/**p[k] = '\0';*/
 	return (p);
 }
 /**
