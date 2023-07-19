@@ -50,7 +50,7 @@ char **strtow(char *str)
 		i = 0;
 		k++;
 	}
-	p[k] = (char *)malloc(sizeof(char) * 8);
+	p[k] = malloc(sizeof(char *));
 	p[k] = NULL;
 	return (p);
 }
