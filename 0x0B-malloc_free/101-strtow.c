@@ -18,8 +18,7 @@ char **strtow(char *str)
 	nbr = nbr_wrd(str);
 	if (nbr == 0)
 		return (NULL);
-	nbr++;
-	p = (char **)malloc(nbr * sizeof(char *));
+	p = (char **)malloc((nbr + 1) * sizeof(char *));
 	if (p == NULL)
 		return (NULL);
 	while (k < nbr)
