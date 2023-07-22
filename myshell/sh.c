@@ -40,10 +40,7 @@ while (inter_mode)
 		break;
 	else
 	{
-		
-		if (call_fork(userinput, nlines) == 1)
-		{
-			process_pid = fork();
+		process_pid = fork();
 			if (process_pid == -1)
 				perror("fork");
 			else if (process_pid == 0)
@@ -51,7 +48,6 @@ while (inter_mode)
 			sh_cmd(userinput, nlines);
 				nlines = -1; }
 			else
-				wait(NULL); }  }}
-
+				wait(NULL); } }
 	free(userinput);/* Free the allocated memory */
 	return (0); }

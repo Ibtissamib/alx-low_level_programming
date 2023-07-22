@@ -1,38 +1,4 @@
 #include "shell.h"
-int call_fork(char *userinput, ssize_t nlines)
-{
-	char *b, *cmd,  *path_cmd, *path, *s, *s_slash;
-	ssize_t j = 0, i = 0, matrix_size = 0;
-	int finder_path = 0;
-	
-	matrix_size = nbr_wrd(userinput, nlines);
-	b = strtok(userinput, " ");
-	if (j == matrix_size - 1)
-        {
-                cmd = (char *)malloc(sizeof(char) * _strlen(b));
-                for (i = 0; i < (_strlen(b) - 1); i++)
-                        cmd[i] = b[i];
-                cmd[i] = '\0';
-        }
-        else
-		cmd = _strdup(b);
-	path = _getenv("PATH");
-	path_cmd = strtok(path, ":");
-	s_slash = str_concat(path_cmd, "/");
-	s = str_concat(s_slash, cmd);
-	while (path_cmd != NULL)
-	{
-		if (access(s, F_OK) == 0)
-		{	finder_path = 1;
-			break;
-		}
-		path_cmd = strtok(NULL, ":");
-		s_slash = str_concat(path_cmd, "/");
-		s = str_concat(s_slash, cmd);
-	}
-	return (finder_path);
-
-}	
 /**
  * _path_handler-handles path
  * @userinput: pointer to char
