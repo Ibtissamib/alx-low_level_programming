@@ -15,13 +15,12 @@ size_t print_listint_safe(const listint_t *head)
 		return (0);
 	while (head)
 	{
-		printf("[%p] %d\n",(const void *)head, head->n);
 		memory_addresses[i] = head;
 		while (j < i)
 		{
 			if (memory_addresses[j] == head)
 			{
-				printf("-> [%p] %d\n", (const void *)head, head->n);
+				printf("-> [%p] %d\n",(const void *)head, head->n);
 				exit(98);
 			}
 			j++;
@@ -30,6 +29,7 @@ size_t print_listint_safe(const listint_t *head)
 		j = 0;
 		nbr++;
 		i++;
+		printf("[%p] %d\n",(const void *)head, head->n);
 		head = head->next;
 
 	}
