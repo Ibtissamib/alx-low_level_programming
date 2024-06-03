@@ -16,6 +16,7 @@ size_t print_listint_safe(const listint_t *head)
 	while (head)
 	{
 		printf("[%p] %d\n",(const void *)head, head->n);
+		memory_addresses[i] = head;
 		while (j < i)
 		{
 			if (memory_addresses[j] == head)
@@ -25,7 +26,6 @@ size_t print_listint_safe(const listint_t *head)
 		}
 		j = 0;
 		nbr++;
-		memory_addresses[i] = head;
 		i++;
 		head = head->next;
 
