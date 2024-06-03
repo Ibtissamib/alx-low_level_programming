@@ -21,6 +21,7 @@ size_t print_listint_safe(const listint_t *head)
 			if (memory_addresses[j] == head)
 			{
 				printf("-> [%p] %d\n", (const void *)head, head->n);
+				nbr++;
 				exit(98);
 			}
 			j++;
