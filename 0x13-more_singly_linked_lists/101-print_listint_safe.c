@@ -17,8 +17,8 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		printf("[%p] %d\n",(const void *)head, head->n);
 		nbr++;
-		head = head->next;
 		memory_addresses[i] = head;
+		head = head->next;
 		i++;
 		while (j < i)
 		{
