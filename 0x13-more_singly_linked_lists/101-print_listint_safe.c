@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * reverse_listint- prints a listint_t linked list.
+ * reverse_listint_safe- prints a listint_t linked list.
  * @head: pointer to listint_t
  *
  * Return: number of nodes
@@ -20,7 +20,7 @@ size_t print_listint_safe(const listint_t *head)
 		{
 			if (memory_addresses[j] == head)
 			{
-				printf("-> [%p] %d\n",(const void *)head, head->n);
+				printf("-> [%p] %d\n", (const void *)head, head->n);
 				exit(98);
 			}
 			j++;
@@ -29,7 +29,7 @@ size_t print_listint_safe(const listint_t *head)
 		j = 0;
 		nbr++;
 		i++;
-		printf("[%p] %d\n",(const void *)head, head->n);
+		printf("[%p] %d\n", (const void *)head, head->n);
 		head = head->next;
 
 	}
