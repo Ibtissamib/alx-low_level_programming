@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Usage: %s <number1> <number2>\n", argv[0]);
 		return (1);
 	}
-snprintf(command, sizeof(command), "echo '(%s) * (%s)' | bc", argv[1],
+snprintf(command, sizeof(command), "printf '(%s) * (%s)' | bc", argv[1],
 		argv[2]);
 	fp = popen(command, "r");
 	if (fp == NULL)
